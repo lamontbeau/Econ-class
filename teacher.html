@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>教师端数据回路 · 高级计量经济学与AI运用</title>
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<header>
+  <div class="hwrap">
+    <div class="brand">
+      <b>高级计量经济学与AI运用</b>
+      <span>【匿名】某高校 · 管理学院</span>
+    </div>
+    <nav>
+      <a href="index.html">课程概况</a>
+      <a href="demo.html">交互式课例</a>
+      <a href="agent.html">教学智能体</a>
+      <a href="teacher.html" aria-current="page">教师端数据回路</a>
+      <a href="resources.html">数字资源清单</a>
+    </nav>
+  </div>
+</header>
+
+<div class="hero">
+  <div class="hwrap">
+    <h1>智能体不只服务学生，更把学情数据回传给教师用于备课决策</h1>
+    <p>课前诊断热力图、课中实时提问看板、课后作业迭代轮次——
+       每个环节的数据都帮助教师调整教学重心，实现精准备课。</p>
+  </div>
+</div>
+
+<main>
+
+<section>
+  <h2>一、AI 赋能前后对比</h2>
+  <p class="sub">基于 2025–2026 学年对照实验数据（n=63）</p>
+
+  <div class="card" style="margin-bottom:20px">
+    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:16px">
+      <h3 style="margin:0">选择对比维度</h3>
+      <div style="display:flex; gap:12px">
+        <button class="metric-btn active" data-metric="accuracy">判断正确率</button>
+        <button class="metric-btn" data-metric="interaction">师生互动频次</button>
+        <button class="metric-btn" data-metric="revision">作业迭代轮次</button>
+        <button class="metric-btn" data-metric="disclosure">AI披露完整度</button>
+      </div>
+    </div>
+    <div id="comparisonChart"></div>
+    <div id="comparisonText" class="note" style="margin-top:14px"></div>
+  </div>
+</section>
+
+<section>
+  <h2>二、课前诊断：误区热力图</h2>
+  <p class="sub">基于 2026 春季学期课前诊断数据（n=63，完成率 100%）</p>
+
+  <div class="card">
+    <div id="heatmapChart"></div>
+    <table style="margin-top:16px; font-size:14px">
+      <tr><th style="width:28%">误区编号</th><th>典型表现</th><th style="width:14%">占比</th></tr>
+      <tr><td><b>M01</b></td><td>认为"事前系数不显著"等同于"平行趋势成立"</td>
+        <td><b style="color:#990011">71%</b></td></tr>
+      <tr><td><b>M02</b></td><td>忽略事前拟合斜率，仅凭单点判断</td>
+        <td><b style="color:#C97A00">65%</b></td></tr>
+      <tr><td><b>M03</b></td><td>基准期敏感性未检验</td>
+        <td><b style="color:#C97A00">58%</b></td></tr>
+      <tr><td><b>M04</b></td><td>将"图上看起来平"作为充分证据</td>
+        <td><b style="color:#C97A00">52%</b></td></tr>
+    </table>
+    <div class="note" style="margin-top:12px">
+      <b>教学决策：</b>本班 M01 误区占比 71%，远高于往年 53%。
+      第7章"平行趋势检验"课中对抗案例的 C 组（差异趋势型）讲评时间从 12 分钟加倍至 24 分钟，
+      并在课中陪练环节主动推送 M01 对应的追问模板 Q1。
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>三、课中实时提问看板</h2>
+  <p class="sub">2026-03-15 第7章第2节实况（14:20–14:50，30分钟双盲研判）</p>
+
+  <div class="card">
+    <div style="display:flex; gap:12px; margin-bottom:16px">
+      <button class="time-btn active" data-time="0">14:20-14:30</button>
+      <button class="time-btn" data-time="1">14:30-14:40</button>
+      <button class="time-btn" data-time="2">14:40-14:50</button>
+    </div>
+    <div id="questionBoard"></div>
+    <div id="stuckGroups" style="margin-top:16px"></div>
+  </div>
+
+  <div class="note" style="margin-top:16px">
+    <b>实时干预：</b>14:35 看板显示"基准期为什么选 t=−1"被问 8 次，
+    教师立即暂停小组研判，用 5 分钟集中讲解基准期选择的敏感性测试，
+    之后该问题提问频次降至 1 次。第 4 组连续 3 次提问"看不出来"，
+    教师走到该组旁听对话、发现误区在于纵轴刻度理解，单独指导 2 分钟后该组解锁。
+  </div>
+</section>
+
+<section>
+  <h2>四、课后作业迭代与判断链评价</h2>
+  <p class="sub">2026 春季学期大作业数据（n=63，提交率 100%）</p>
+
+  <div class="grid g2" style="align-items:start">
+    <div class="card">
+      <h4>作业迭代轮次分布</h4>
+      <div id="revisionChart"></div>
+      <p style="font-size:13.5px; color:#5E6A82; margin:12px 0 0">
+        AI 赋能后，学生平均迭代轮次从 1.2 次提升至 2.6 次。
+        智能体在每轮提交后指出判断链缺口（如"第3步未说明基准期选择依据"），
+        但不给出答案，学生需自行补齐后重新提交。
+      </p>
+    </div>
+    <div class="card">
+      <h4>判断链完整度得分分布</h4>
+      <div id="judgmentScoreChart"></div>
+      <p style="font-size:13.5px; color:#5E6A82; margin:12px 0 0">
+        判断链占作业总分的 30%（最高单项）。AI 赋能后，
+        平均得分从 18.3 分（满分 30）提升至 25.1 分，
+        得分 ≥27 分（优秀）的比例从 14% 提升至 54%。
+      </p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>五、教师如何通过 AI 引导学生提高学习效果</h2>
+  <p class="sub">四环节精准干预：从课前诊断到课后迭代的闭环</p>
+
+  <div class="card" style="margin-bottom:20px">
+    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:16px">
+      <h3 style="margin:0">选择教学环节</h3>
+      <div style="display:flex; gap:12px; flex-wrap:wrap">
+        <button class="phase-btn active" data-phase="pre">课前诊断</button>
+        <button class="phase-btn" data-phase="during">课中研判</button>
+        <button class="phase-btn" data-phase="post">课后作业</button>
+        <button class="phase-btn" data-phase="iterate">迭代反馈</button>
+      </div>
+    </div>
+    <div id="teachingPhaseChart"></div>
+    <div id="teachingPhaseText" class="note" style="margin-top:14px"></div>
+  </div>
+
+  <div class="card">
+    <h4>教师 AI 协同引导效果对比</h4>
+    <div id="guidanceEffectChart"></div>
+  </div>
+</section>
+
+<section>
+  <h2>六、学生实时评价与反馈</h2>
+  <p class="sub">匿名教学评价摘录（2026 春季学期期末）</p>
+
+  <div class="grid g3">
+    <div class="card tint">
+      <p style="font-size:14px; line-height:1.65; margin:0">
+        "刚开始很不适应，总想问'这个对不对'，但智能体只会反问我'你觉得哪里可疑'。
+        几轮下来发现，自己推出来的结论记得特别牢。"
+      </p>
+      <p style="font-size:12px; color:#5E6A82; margin-top:10px">— 学生 A，大数据管理与应用</p>
+    </div>
+    <div class="card tint">
+      <p style="font-size:14px; line-height:1.65; margin:0">
+        "课前测试错得一塌糊涂，但不扣分让我敢于暴露问题。
+        第二天上课老师直接针对我们班的高频误区设计案例，感觉是'量身定制'。"
+      </p>
+      <p style="font-size:12px; color:#5E6A82; margin-top:10px">— 学生 B，工程管理</p>
+    </div>
+    <div class="card tint">
+      <p style="font-size:14px; line-height:1.65; margin:0">
+        "披露表一开始觉得麻烦，后来发现它逼着我回顾每一步 AI 干了什么、
+        我又验证了什么。这比直接抄 AI 的代码有用得多。"
+      </p>
+      <p style="font-size:12px; color:#5E6A82; margin-top:10px">— 学生 C，大数据管理与应用</p>
+    </div>
+  </div>
+
+  <div class="card" style="margin-top:20px">
+    <h4>教学满意度评分（5分制）</h4>
+    <div id="satisfactionChart"></div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="hwrap">
+    <div>《高级计量经济学与AI运用》 · 【匿名】某高校管理学院 · 主讲教师 【匿名】</div>
+    <div>本页所有图表数据基于 2025–2026 学年教学实践，交互在浏览器本地运行</div>
+  </div>
+</footer>
+<script src="assets/app.js"></script>
+</body>
+</html>

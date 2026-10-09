@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>交互式课例 · 高级计量经济学与AI运用</title>
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<header>
+  <div class="hwrap">
+    <div class="brand">
+      <b>高级计量经济学与AI运用</b>
+      <span>【匿名】某高校 · 管理学院</span>
+    </div>
+    <nav>
+      <a href="index.html">课程概况</a>
+      <a href="demo.html" aria-current="page">交互式课例</a>
+      <a href="agent.html">教学智能体</a>
+      <a href="teacher.html">教师端数据回路</a>
+      <a href="resources.html">数字资源清单</a>
+    </nav>
+  </div>
+</header>
+
+<div class="hero">
+  <div class="hwrap">
+    <h1>换一次基准期，"可信"就变成"不可信"</h1>
+    <p>课堂上学生要在不知真值的前提下研判三张事件研究图。
+       这里把三组案例开放出来，你可以自己动手换基准期，
+       看同一份数据如何得出相反的结论。</p>
+  </div>
+</div>
+
+<main>
+
+<section>
+  <h2>一、事件研究基准期探索器</h2>
+  <p class="sub">选一组案例，再换基准期。注意右侧读数中"事后首期效应"的变化幅度</p>
+
+  <div class="grid g2" style="grid-template-columns:1.15fr 1fr; align-items:start">
+    <div class="card">
+      <div class="ui" style="margin-bottom:14px; font-size:14.5px">
+        <div style="margin-bottom:9px"><b>案例：</b>
+          <label style="margin-right:14px"><input type="radio" name="esCase"
+            value="A" checked> A 组</label>
+          <label style="margin-right:14px"><input type="radio" name="esCase"
+            value="B"> B 组</label>
+          <label><input type="radio" name="esCase" value="C"> C 组</label>
+        </div>
+        <div><b>基准期 k₀：</b>
+          <label style="margin-right:12px"><input type="radio" name="esBase"
+            value="-4" checked> −4</label>
+          <label style="margin-right:12px"><input type="radio" name="esBase"
+            value="-3"> −3</label>
+          <label style="margin-right:12px"><input type="radio" name="esBase"
+            value="-2"> −2</label>
+          <label><input type="radio" name="esBase" value="-1"> −1</label>
+        </div>
+      </div>
+      <div id="esChart"></div>
+      <p style="font-size:12.5px; color:#5E6A82; margin:10px 0 0">
+        红色实心区间表示该事前系数的 95% 置信区间已不含 0；红色虚线为事前趋势外推线。
+        标准误按 σ√|k−k₀| 近似重算，用于演示基准期的影响，非真实估计结果。
+      </p>
+    </div>
+
+    <div>
+      <div class="card tint">
+        <h4>读数</h4>
+        <table style="margin:0"><tbody id="esRead"></tbody></table>
+      </div>
+      <div class="note" style="margin-top:16px">
+        <b>观察提示　</b><span id="esHint"></span>
+      </div>
+      <div class="card ice">
+        <h4>这三组的真值</h4>
+        <p style="font-size:14.5px; margin:0">
+          <b>A 组</b>　真实满足平行趋势<br>
+          <b>B 组</b>　预期效应型伪平行<br>
+          <b>C 组</b>　差异趋势型伪平行
+        </p>
+        <p style="font-size:13.5px; color:#5E6A82; margin:10px 0 0">
+          课堂上真值不公开，学生双盲研判后教师才揭示。
+          此处公开是为了让访问者看清设计意图。
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>二、三组案例的静态对照图</h2>
+  <p class="sub">课堂发放版本：统一以 k₀=−4 为基准期，使三类病灶各自可见</p>
+  <figure>
+    <img src="fig/fig_event3.png" alt="三组事件研究图对照：A组真实平行、B组预期效应、C组差异趋势">
+    <figcaption>课堂双盲研判材料。三张图由 AI 依教师设定的缺陷类型生成，
+      教师逐项校验经济学合理性后投入教学。</figcaption>
+  </figure>
+  <div class="grid g3">
+    <div class="card">
+      <h4>A 组 · 可信</h4>
+      <p>事前系数紧贴零线且置信区间窄，事后出现明确跳升。换任何基准期结论都不变——
+         对基准期不敏感，是可信设计的签名特征。</p>
+    </div>
+    <div class="card">
+      <h4>B 组 · 预期效应</h4>
+      <p>t = −1 的置信区间已不含 0，政策在实施前已被预期。
+         把基准期移到 −1，违背不会消失，只会换个位置出现。</p>
+    </div>
+    <div class="card">
+      <h4>C 组 · 差异趋势</h4>
+      <p>事前系数逐个不显著，但连成上升直线，事后斜率与事前完全一致。
+         这是本课例最核心的教学靶子。</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>三、教学难点：为什么"不显著"不等于"成立"</h2>
+  <div class="grid g2" style="grid-template-columns:1fr 1.1fr; align-items:start">
+    <figure style="margin:0">
+      <img src="fig/fig_caseC.png" alt="C组事件研究图：事前系数逐个不显著但连成上升直线">
+      <figcaption>C 组单独放大</figcaption>
+    </figure>
+    <div>
+      <p>C 组的四个事前系数分别是 0.00、0.07、0.15、0.22，标准误 0.09 至 0.12。
+         逐个来看，每个置信区间都覆盖零。按学生惯用的判断标准
+         "事前不显著即通过"，这张图会被判为可信。</p>
+      <p>但把四个点连起来是一条斜率约 0.075 的上升直线，而事后斜率约 0.07 ——
+         两者几乎相同。真正的原因是<b>标准误过大导致检验力不足</b>：
+         检验没有力气把差异检出来，"不显著"只说明没检验出来。</p>
+      <div class="note">
+        <b>本课要形成的判断习惯　</b>先看系数的走向与量级，再看显著性。
+      </div>
+      <p style="font-size:14.5px; color:#5E6A82; margin:0">
+        2025—2026 学年前测中，71% 的学生在这一点上出错。这也是课中时间
+        重点压在 C 组讲评上的依据。</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>四、超越 DID：另外三类识别策略的诊断关卡</h2>
+  <p class="sub">课程模块四覆盖 IV / RDD / SCM。拖动下面的控件，自己动手改变数据生成过程，
+     看诊断指标如何随之变化——三类方法各有一条"先诊断、再下结论"的关卡，
+     与 DID 的平行趋势检验是同一套教学范式</p>
+
+  <h3>4.1 工具变量法：第一阶段够不够强</h3>
+  <div class="grid g2" style="grid-template-columns:1.15fr 1fr; align-items:start">
+    <div class="card">
+      <div class="ui" style="margin-bottom:14px; font-size:14.5px">
+        <b>工具变量强度：</b><span id="ivLabel">中等</span>
+        <input type="range" id="ivStrength" min="0" max="100" value="50" style="width:100%">
+      </div>
+      <div id="ivChart"></div>
+      <p style="font-size:12.5px; color:#5E6A82; margin:10px 0 0">
+        拖动滑块调整工具变量 Z 对内生变量 X 的真实解释力，观察散点与第一阶段拟合线如何变化。
+      </p>
+    </div>
+    <div>
+      <div class="card tint">
+        <h4>读数</h4>
+        <table style="margin:0"><tbody id="ivRead"></tbody></table>
+      </div>
+      <div class="note" style="margin-top:16px">
+        <b>观察提示　</b><span id="ivHint"></span>
+      </div>
+    </div>
+  </div>
+
+  <h3 style="margin-top:36px">4.2 断点回归：局部拟合与密度连续性</h3>
+  <div class="grid g2" style="grid-template-columns:1.15fr 1fr; align-items:start">
+    <div class="card">
+      <div class="ui" style="margin-bottom:14px; font-size:14.5px">
+        <label style="margin-right:18px"><input type="radio" name="rddCase"
+          value="clean" checked> 断点清晰</label>
+        <label><input type="radio" name="rddCase" value="bunch"> 操纵性堆积</label>
+      </div>
+      <div id="rddChart"></div>
+      <p style="font-size:12.5px; color:#5E6A82; margin:10px 0 0">
+        切换两种数据生成方式，观察断点两侧局部拟合的衔接情况与断点附近的样本密度。
+      </p>
+    </div>
+    <div>
+      <div class="card tint">
+        <h4>读数</h4>
+        <table style="margin:0"><tbody id="rddRead"></tbody></table>
+      </div>
+      <div class="note" style="margin-top:16px">
+        <b>观察提示　</b><span id="rddHint"></span>
+      </div>
+    </div>
+  </div>
+
+  <h3 style="margin-top:36px">4.3 合成控制法：处理前拟合优度</h3>
+  <div class="grid g2" style="grid-template-columns:1.15fr 1fr; align-items:start">
+    <div class="card">
+      <div class="ui" style="margin-bottom:14px; font-size:14.5px">
+        <b>处理前拟合优度：</b><span id="scmLabel">优良</span>
+        <input type="range" id="scmFit" min="0" max="100" value="90" style="width:100%">
+      </div>
+      <div id="scmChart"></div>
+      <p style="font-size:12.5px; color:#5E6A82; margin:10px 0 0">
+        拖动滑块调整合成对照组在处理前与处理组的拟合程度，观察处理后的差距是否还能被归因于政策。
+      </p>
+    </div>
+    <div>
+      <div class="card tint">
+        <h4>读数</h4>
+        <table style="margin:0"><tbody id="scmRead"></tbody></table>
+      </div>
+      <div class="note" style="margin-top:16px">
+        <b>观察提示　</b><span id="scmHint"></span>
+      </div>
+    </div>
+  </div>
+
+  <div class="note">
+    <b>同一套判断习惯　</b>DID 看平行趋势与事前斜率，IV 看第一阶段强度，
+    RDD 看局部拟合稳健性与密度连续性，SCM 看处理前拟合优度。
+    四类方法的具体诊断指标不同，但共同逻辑一致：<b>结论的可信度取决于假设是否被检验过，
+    不取决于系数是否显著或差距是否够大</b>。
+  </div>
+</section>
+
+<section>
+  <h2>五、课前诊断自测</h2>
+  <p class="sub">课前智能体推送的六道题。第 2、5 题为陷阱题。作答后即显示说明</p>
+  <div class="note">
+    <b>与课堂版本的差别　</b>课前智能体<b>只追问、不给答案</b>——
+    它会连着问你"你看的是哪几个点""如果这个依据不成立，结论会变吗"，直到你自己触及要点。
+    此处为公开演示版，作答后直接给出说明。
+  </div>
+  <div id="quiz"></div>
+  <p style="font-size:14px; color:#5E6A82">
+    课程前测只统计完成度，不统计答对率。这样设计是为了让学生敢于暴露误区——
+    若按答对率计分，学生会先用 AI 查答案，前测就失去诊断功能。
+  </p>
+</section>
+
+</main>
+
+<footer>
+  <div class="hwrap">
+    <div>《高级计量经济学与AI运用》 · 【匿名】某高校管理学院 · 主讲教师 【匿名】</div>
+    <div>本页所有交互均在浏览器本地运行，不回传任何数据</div>
+  </div>
+</footer>
+<script src="assets/app.js"></script>
+</body>
+</html>

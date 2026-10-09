@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>教学智能体 · 高级计量经济学与AI运用</title>
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<header>
+  <div class="hwrap">
+    <div class="brand">
+      <b>高级计量经济学与AI运用</b>
+      <span>【匿名】某高校 · 管理学院</span>
+    </div>
+    <nav>
+      <a href="index.html">课程概况</a>
+      <a href="demo.html">交互式课例</a>
+      <a href="agent.html" aria-current="page">教学智能体</a>
+      <a href="teacher.html">教师端数据回路</a>
+      <a href="resources.html">数字资源清单</a>
+    </nav>
+  </div>
+</header>
+
+<div class="hero">
+  <div class="hwrap">
+    <h1>把 AI 从"给答案的工具"改造成"出题者与陪练"</h1>
+    <p>四个应用节点嵌入课前、课中、课后。三个面向学生的节点都被限定为
+       只追问、不给结论——因为本课程要考核的正是判断能力本身。</p>
+  </div>
+</div>
+
+<main>
+
+<section>
+  <h2>一、四个 AI 应用节点</h2>
+  <p class="sub">每个节点标注应用环节、设计目的、操作流程、预期效果与关键约束</p>
+  <table>
+    <tr>
+      <th style="width:9%">节点</th><th style="width:14%">环节</th>
+      <th style="width:23%">设计目的</th><th>核心约束</th>
+    </tr>
+    <tr>
+      <td><b>1</b><br><span class="tag">课前</span></td>
+      <td>课前 48 小时<br>诊断性预习</td>
+      <td>让误区在上课前暴露，把课堂时间留给判断训练而非概念复述</td>
+      <td><b>只追问、不给结论。</b>学生要求直接给答案时，说明前测只计完成度、
+        错误不扣分，然后继续追问</td>
+    </tr>
+    <tr>
+      <td><b>2</b><br><span class="tag">课中</span></td>
+      <td>课中 20 分钟<br>对抗性案例生成</td>
+      <td>制造"真假难辨"的判断情境，把讲授型难点转为可操作的判断训练</td>
+      <td><b>由教师操作，学生不接触生成过程。</b>教师须逐项校验 AI 生成案例的
+        经济学合理性，不得直接使用 AI 编造的数据</td>
+    </tr>
+    <tr>
+      <td><b>3</b><br><span class="tag">课中</span></td>
+      <td>课中全程<br>即时反问陪练</td>
+      <td>承接个体化追问，释放教师精力用于组织研判与追问理由</td>
+      <td><b>只反问、不给判断。</b>不知真值也不猜；学生追问真值时明确拒答</td>
+    </tr>
+    <tr>
+      <td><b>4</b><br><span class="tag">课后</span></td>
+      <td>课后一周<br>复现陪练与判断链评价</td>
+      <td>把判断能力迁移到真实论文，作业从"交结果"改为"交判断链"</td>
+      <td><b>只报缺口、不打分、不代写。</b>披露表不完整则作业不予评分</td>
+    </tr>
+  </table>
+  <div class="note">
+    <b>三个节点都限制 AI 不给结论，这不是保守，是设计的核心。</b>
+    如果智能体在课中给出判断，学生的研判表就变成 AI 答案的抄录，双盲设计立即失效。
+    限制为"只追问"后，智能体承接的是教师无法同时应付的个体化追问——
+    一位教师面对 16 个小组无法同时反问每一组，智能体可以。
+  </div>
+</section>
+
+<section>
+  <h2>二、知识库结构</h2>
+  <p class="sub">五份文件，按节点挂载。全部为教师自建，非通用语料</p>
+  <div class="grid g3">
+    <div class="card"><span class="num">1</span>
+      <h4>知识库 01 · 课程讲义</h4>
+      <p>平行趋势假设的实质、事件研究规范做法、两类违背的成因与偏误方向、
+         五维验证清单（图形检验、斜率检验、稳健性检验、经济学合理性、数据生成过程）、
+         常用证伪手段、学生常见表述错误的规范改写。</p>
+      <p style="font-size:13px;color:#5E6A82;margin:8px 0 0">挂载：全部节点</p>
+    </div>
+    <div class="card"><span class="num">2</span>
+      <h4>知识库 02 · 误区案例库</h4>
+      <p>M01–M10 十类误区的识别特征、误区实质、数字型反例与追问入口。
+         智能体据此匹配学生回答落入哪一类。</p>
+      <p style="font-size:13px;color:#5E6A82;margin:8px 0 0">挂载：节点 1、3、4</p>
+    </div>
+    <div class="card"><span class="num">3</span>
+      <h4>知识库 03 · 追问模板</h4>
+      <p>对应十类误区的追问链 Q1–Q10 与通用三连，含话术纪律
+         （可以说什么、不可以说什么）与收束方式。</p>
+      <p style="font-size:13px;color:#5E6A82;margin:8px 0 0">挂载：节点 1、3</p>
+    </div>
+  </div>
+  <div class="grid g2" style="margin-top:18px">
+    <div class="card"><span class="num">4</span>
+      <h4>知识库 04 · 核验清单与评分规则</h4>
+      <p>课堂研判表评分标准、五维识别假设验证清单（图形检验、斜率检验、
+         稳健性检验、经济学合理性、数据生成过程）、课后作业 100 分评分表
+         （判断链占 30 分为最高单项）、智能体给形成性反馈的方式。</p>
+      <p style="font-size:13px;color:#5E6A82;margin:8px 0 0">挂载：节点 2、4</p>
+    </div>
+    <div class="card"><span class="num">5</span>
+      <h4>知识库 05 · AI 使用披露规范</h4>
+      <p>课程立场、逐环节披露表模板、智能体核查七项规则、教师抽查要点、
+         常见不合格披露示例、与期刊规范的衔接。</p>
+      <p style="font-size:13px;color:#5E6A82;margin:8px 0 0">挂载：节点 4</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>三、系统提示词节选</h2>
+  <p class="sub">完整提示词见课程仓库 <code>agent/</code> 目录，可直接粘贴至扣子平台</p>
+
+  <h3>节点 1 · 课前诊断（铁律部分）</h3>
+  <pre><code># 铁律（违反即失败）
+
+1. 你只追问，不给答案。任何情况下不得说出"正确答案是"
+   "平行趋势其实不成立""你应该做联合检验"这类结论性表述。
+2. 不评价对错。不说"对""错""很好""不太准确"。
+3. 不替学生写结论、不给完整代码。
+4. 学生明确要求"直接告诉我答案"时，回复：
+   这门课的前测只统计完成度，不统计答对率，你写错了不扣分；
+   但如果我现在告诉你答案，明天课上的判断训练就没有靶子了。
+   我们换个问法——（继续追问）
+5. 学生连续三轮仍未触及要点时，从知识库给出一个反例
+   （数字型反例优先），然后继续追问，仍不给结论。</code></pre>
+
+  <h3>节点 3 · 课中反问（反问优先级）</h3>
+  <pre><code>学生的问题落到哪一类，用哪一条反问：
+
+- 问"过了吗／可信吗"  → 你看的是哪几个点？置信区间注意到了吗？
+- 说"事前不显著"      → 这个样本多大的差异才能被检出来？
+                        把三个系数连起来你看到什么？
+- 说"图上看是平的"    → 纵轴范围是多少？如果换成 −4 到 9 会怎样？
+- 问"基准期为什么选这一期" → 换一期你预期图形怎么变？
+                             两张不一样你信哪张？
+- 说"AI 说……"        → 这是它的判断还是你的判断？
+                        你能说出一条它没提到的理由吗？</code></pre>
+
+  <h3>节点 4 · 课后核查（输出格式）</h3>
+  <pre><code>披露表核查　完整项：X / 7
+待补齐：
+  - 第 3 项：标记使用 AI 的环节 5 个，附图 3 张，缺 2 张
+  - 第 5 项：拒绝理由为"我觉得不合理"，请补充计量依据
+
+禁止：替学生填写、判断研究结论对错、给出分数。</code></pre>
+</section>
+
+<section>
+  <h2>四、亲自体验：课中反问陪练</h2>
+  <p class="sub">下面是节点 3 反问逻辑的简化还原。挑一句学生常问的话，或直接打字，
+    看智能体如何用"只反问、不给结论"的方式接话</p>
+  <div class="grid g2" style="grid-template-columns:1fr 1fr; align-items:start">
+    <div class="card">
+      <div id="agentChat" style="min-height:260px; max-height:360px; overflow-y:auto;
+           display:flex; flex-direction:column; gap:10px; padding:4px 2px"></div>
+      <div style="display:flex; gap:8px; margin-top:14px">
+        <input id="agentInput" type="text" placeholder="打字试试，或点右侧的常见问法"
+          style="flex:1; padding:9px 12px; border:1px solid var(--line);
+                 border-radius:6px; font-size:14.5px; font-family:inherit">
+        <button id="agentSend" type="button" style="padding:9px 18px; border:none;
+          border-radius:6px; background:var(--navy); color:#fff; cursor:pointer;
+          font-size:14.5px">发送</button>
+      </div>
+      <button id="agentReset" type="button" style="margin-top:10px; font-size:13px;
+        padding:4px 12px; border:1px solid var(--line); background:var(--light);
+        border-radius:5px; cursor:pointer; color:var(--gray)">重新开始</button>
+    </div>
+    <div>
+      <div class="card tint">
+        <h4>常见问法（点击试试）</h4>
+        <div id="agentPresets" style="display:flex; flex-direction:column; gap:8px"></div>
+      </div>
+      <div class="note" style="margin-top:16px">
+        <b>这不是真的模型　</b>这里用关键词匹配复现节点 3 的反问表，
+        帮助你直观感受"只追问不给结论"是什么手感。每次回复会从多个追问中随机选择，
+        避免机械重复。课堂上部署在扣子平台的智能体由生成式大模型驱动，
+        能处理远比这里丰富的表达方式，但受同一套铁律约束。
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>五、教师端数据回路</h2>
+  <p class="sub">智能体不只服务学生，更把学情数据回传给教师用于备课决策</p>
+  <div class="grid g2">
+    <div class="card tint">
+      <h4>课前：误区热力图</h4>
+      <p>字段包括学号、各题误区编号、追问轮次、学生自评把握程度、
+         是否自行纠正、学生分类（A/B/C 类）。</p>
+      <p><b>教师使用方式：</b>按误区占比重排课中时间。
+         本班 71% 错在 M01，则课中对抗案例的 C 组讲评时间加倍。</p>
+    </div>
+    <div class="card tint">
+      <h4>课中：提问看板</h4>
+      <pre style="font-size:12px; margin:8px 0 0"><code>课中提问看板　14:20–14:35
+ 基准期为什么选 t=-1 ……… 8 次 ← 集中点评
+ 事前不显著算不算过 ………… 6 次 ← 集中点评
+ 差异趋势 vs 预期效应 ……… 5 次 ← 集中点评
+ 卡住小组：第 4 组（3 次"看不出来"）</code></pre>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="hwrap">
+    <div>《高级计量经济学与AI运用》 · 【匿名】某高校管理学院 · 主讲教师 【匿名】</div>
+    <div>智能体部署平台：扣子 coze.cn</div>
+  </div>
+</footer>
+<script src="assets/app.js"></script>
+</body>
+</html>
